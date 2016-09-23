@@ -1,3 +1,5 @@
+import { connect } from 'react-redux'
+import { Provider } from 'react-redux'
 
 
 import React from 'react';
@@ -58,13 +60,11 @@ class MainApp extends React.Component{
 		}
 	}
 
-	selectRow(id) {
+	selectRow(repo) {
 		this.setState({
 			currentScreen : {
 				type: 'REPOSITORY',
-				data: {
-					id: id
-				}
+				data: repo
 			}
 		})
 	}
@@ -74,9 +74,9 @@ class MainApp extends React.Component{
 		return(
 			<div>
 				<div>Hi</div>
-				<RepoList repos={ store.getState().repositories.list } toggleRepo={ _toggleRepo } store={ store } onSelectRow={this.selectRow.bind(this)} />
+				<RepoList repos={ store.getState().repositories.list } toggleRepo={ _toggleRepo } onSelectRow={this.selectRow.bind(this)} />
 				<MainPanel screen={this.state.currentScreen} />
-				<AddRepo action={ _addNewRepo } store={ store } />
+				<AddRepo action={ _addNewRepo } />
 
 				<button type="button" onClick={ function(){ console.log(store.getState())}}>getState</button>
 			</div>
@@ -84,7 +84,11 @@ class MainApp extends React.Component{
 	}
 }
 
-const renderApp = () => ReactDOM.render( <MainApp />, document.getElementById('app'));
+const renderApp = () => ReactDOM.render(
+	<Provider store={store}>
+		<MainApp />
+	</Provider>
+, document.getElementById('app'));
 
 store.subscribe(renderApp);
 

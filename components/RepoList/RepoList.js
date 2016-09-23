@@ -19,7 +19,7 @@ class RepoList extends React.Component{
 							key={repo.id}
 							toggleRepo={this.props.toggleRepo}
 							update={this.props.updateToTip}
-							onClick={this._handleSelect.bind(this,repo.id)}
+							onClick={this._handleSelect.bind(this, repo)}
 							/>
 			})
 	}

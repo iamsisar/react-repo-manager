@@ -1,48 +1,44 @@
 import React from 'react';
+import RepoControlPanel from '../RepoControlPanel/RepoControlPanel';
 
 
-class MainPanel extends React.Component{
+/*
+ * Il componente riceve in props.screen la rappresentazione
+ * della schermata da visualizzare.
+ *
+ * Deve solo renderizzare elementi in base a props, quindi lo
+ * trattiamo come stateless functional component
+ * (https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components)
+ */
 
-	/*
-	 * Il componente riceve in this.props.output la rappresentazione
-	 * della schermata da visualizzare
-	 */
+const panelOutput = (screen) => {
 
+	switch (screen.type){
+		case 'WELCOME':
+			return(
+				<span>Benvenuto</span>
+			)
+		break;
 
-	render(){
+		case 'REPOSITORY':
+			return <RepoControlPanel data={screen.data} />
+		break;
 
-		const output = () => {
-
-			const currentScreen = this.props.screen;
-
-			switch (currentScreen.type){
-				case 'WELCOME':
-					return(
-						<span>Benvenuto</span>
-					)
-				break;
-
-				case 'REPOSITORY':
-					return(
-						<span>Repository <strong>{currentScreen.data.id}</strong> selezionata</span>
-					)
-				break;
-
-				default:
-					return(
-						<span>zzz...</span>
-					)
-			}
-		}
-
-
-
-		return (
-			<div>
-				{output()}
-			</div>
-		)
+		default:
+			return(
+				<span>zzz...</span>
+			)
 	}
 }
+
+
+
+const MainPanel = (props) => (
+
+		<div>
+			{ panelOutput(props.screen) }
+		</div>
+)
+
 
 export default MainPanel;
