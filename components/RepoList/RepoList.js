@@ -16,10 +16,10 @@ class RepoList extends React.Component{
 			return this.props.repos.map((repo) => {
 				return <RepoItem
 							repo={repo}
-							key={repo.id}
 							toggleRepo={this.props.toggleRepo}
 							update={this.props.updateToTip}
 							onClick={this._handleSelect.bind(this, repo)}
+							key={repo.id}
 							/>
 			})
 	}

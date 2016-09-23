@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 /*
  * Il componente riceve come secondo parametro il context
  * dal Provider, già destrutturato per accedere direttamente
@@ -32,6 +30,11 @@ const RepoControlPanel = ({ data }, { store }) => {
 	)
 }
 
+
+/*
+ * Questo è il decorator necessario a ricevere il context
+ * dal Provider
+ */
 RepoControlPanel.contextTypes = {
 	store: React.PropTypes.object
 }
