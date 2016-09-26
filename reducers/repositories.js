@@ -33,13 +33,7 @@ const repositories = ( state = { list:[], loading: false, error:false }, action 
 
 		case 'UPDATE_TO_TIP' :
 
-			return state.map((repo) => {
-				if (repo.id === action.id) {
-					repo.isActive = !repo.isActive;
-				}
-				return repo;
-			})
-
+				alert('update to tip repo ' + action.id)
 
 			break;
 

@@ -1,18 +1,16 @@
 import React from 'react';
 
 
-const RepoItem = ({repo, toggleRepo, update, onClick}) => {
+const RepoItem = ({repo, toggleRepo, updateToTip, onClick}) => {
 
 	const _handleToggle = (e) => {
 		e.stopPropagation();
-		let id = repo.id;
-		toggleRepo(id);
+		toggleRepo(repo.id);
 	}
 
 	const _handleUpdateToTip = (e) => {
 		e.stopPropagation();
-		let id = repo.id;
-		updateToTip(id);
+		updateToTip(repo.id);
 	}
 
 
@@ -22,7 +20,7 @@ const RepoItem = ({repo, toggleRepo, update, onClick}) => {
 			{repo.name}
 			</td>
 			<td>
-				<button type="button" onClick={_handleUpdateToTip }>up</button>
+				<button type="button" onClick={ _handleUpdateToTip }>up</button>
 			</td>
 			<td>
 			{repo.url}
@@ -31,7 +29,7 @@ const RepoItem = ({repo, toggleRepo, update, onClick}) => {
 			{repo.port}
 			</td>
 			<td>
-				<button type="button" onClick={_handleToggle }>{ repo.isActive ? 'off' : 'on' }</button>
+				<button type="button" onClick={ _handleToggle }>{ repo.isActive ? 'off' : 'on' }</button>
 				<input type="checkbox" disabled checked={ repo.isActive ? 'checked' : '' } />
 			</td>
 		</tr>
@@ -39,34 +37,5 @@ const RepoItem = ({repo, toggleRepo, update, onClick}) => {
 
 }
 
-
-// class RepoItem extends React.Component{
-
-
-
-
-// 	render(){
-// 		return (
-// 			<tr onClick={this.props.onClick}>
-// 				<td>
-// 				{this.props.repo.name}
-// 				</td>
-// 				<td>
-// 					<button type="button" onClick={this._handleUpdateToTip.bind(this)}>up</button>
-// 				</td>
-// 				<td>
-// 				{this.props.repo.url}
-// 				</td>
-// 				<td>
-// 				{this.props.repo.port}
-// 				</td>
-// 				<td>
-// 					<button type="button" onClick={this._handleToggle.bind(this)}>{ this.props.repo.isActive ? 'off' : 'on' }</button>
-// 					<input type="checkbox" disabled checked={ this.props.repo.isActive ? 'checked' : '' } />
-// 				</td>
-// 			</tr>
-// 		)
-// 	}
-// }
 
 export default RepoItem;

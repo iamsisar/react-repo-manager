@@ -74,7 +74,7 @@ class MainApp extends React.Component{
 		return(
 			<div>
 				<div>Hi</div>
-				<RepoList repos={ store.getState().repositories.list } toggleRepo={ _toggleRepo } onSelectRow={this.selectRow.bind(this)} />
+				<RepoList repos={ store.getState().repositories.list } toggleRepo={ _toggleRepo } updateToTip={ _updateToTip } onSelectRow={this.selectRow.bind(this)} />
 				<MainPanel screen={this.state.currentScreen} />
 				<AddRepo action={ _addNewRepo } />
 
