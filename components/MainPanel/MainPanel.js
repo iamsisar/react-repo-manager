@@ -1,6 +1,7 @@
 import React from 'react';
 import RepoControlPanel from '../RepoControlPanel/RepoControlPanel';
 
+import style from './MainPanel.scss';
 
 /*
  * Il componente riceve in props.screen la rappresentazione
@@ -35,7 +36,7 @@ const panelOutput = (screen) => {
 
 const MainPanel = (props) => (
 
-		<div>
+		<div className={style.mainPanel}>
 			{ panelOutput(props.screen) }
 		</div>
 )

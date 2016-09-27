@@ -6,8 +6,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainPanel from './components/MainPanel/MainPanel';
 import RepoList from './components/RepoList/RepoList';
-import AddRepo from './components/AddRepo/AddRepo';
 import store from './reducers';
+
+require('normalize.css');
+require('./styles/app.scss');
 
 
 
@@ -73,12 +75,9 @@ class MainApp extends React.Component{
 	render(){
 		return(
 			<div>
-				<div>Hi</div>
-				<RepoList repos={ store.getState().repositories.list } toggleRepo={ _toggleRepo } updateToTip={ _updateToTip } onSelectRow={this.selectRow.bind(this)} />
+				<RepoList repos={ store.getState().repositories.list } addRepo={ _addNewRepo } toggleRepo={ _toggleRepo } updateToTip={ _updateToTip } onSelectRow={this.selectRow.bind(this)} />
 				<MainPanel screen={this.state.currentScreen} />
-				<AddRepo action={ _addNewRepo } />
-
-				<button type="button" onClick={ function(){ console.log(store.getState())}}>getState</button>
+				<button className="button" type="button" onClick={ function(){ console.log(store.getState())}}>getState</button>
 			</div>
 		)
 	}

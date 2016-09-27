@@ -25,7 +25,7 @@ const RepoControlPanel = ({ data }, { store }) => {
 	return(
 		<div>
 		<h1>Repository {data.id}: {data.name}</h1>
-		<button type="button" onClick={_toggleRepo.bind(this, data.id)}>{ data.isActive ? 'off' : 'on' }</button>
+		<button type="button" onClick={ () => _toggleRepo(data.id) }>{ data.isActive ? 'off' : 'on' }</button>
 		</div>
 	)
 }

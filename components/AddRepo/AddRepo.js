@@ -1,5 +1,6 @@
 import React from 'react';
 
+import style from './AddRepo.scss';
 
 class AddRepo extends React.Component{
 
@@ -13,8 +14,8 @@ class AddRepo extends React.Component{
 	render(){
 		return (
 			<div>
-				<input type="text" ref={(input) => this._name = input} />
-				<button type="button" onClick={this._handleSubmit.bind(this)} >Add new repo</button>
+				<input type="text" ref={ (input) => this._name = input } />
+				<button className={style.button} type="button" onClick={ this._handleSubmit.bind(this) } >Add new repo</button>
 
 			</div>
 
