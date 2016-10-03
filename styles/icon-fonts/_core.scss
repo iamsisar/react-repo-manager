@@ -1,0 +1,37 @@
+//* = Fonts list
+//----------------------------------------------- */
+
+$fonts:(
+	// id : classname
+	fontawesome : $fa-css-prefix,
+);
+
+//* = Per font adjustments
+//----------------------------------------------- */
+
+.#{map-get($fonts, fontawesome)} {
+	font-family: FontAwesome;
+	line-height: 1;
+}
+
+
+//* = Core
+//----------------------------------------------- */
+%icon-core{
+	display: inline-block;
+	font-style: normal;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+@each $id, $class in $fonts{ .#{$class} { @extend %icon-core; } }
+@mixin icon($family, $glyph, $where:before ) {
+  &::#{$where}{
+    content: $glyph;
+    @each $id, $class in $fonts{
+	    @if $family == $id{ @extend .#{$class} }
+    }
+  }
+}

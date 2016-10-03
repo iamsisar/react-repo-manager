@@ -5,19 +5,19 @@ import style from './AddRepo.scss';
 class AddRepo extends React.Component{
 
 
-	_handleSubmit(){
-		let name = this._name.value;
+	_handleSubmit(e){
+		e.preventDefault();
+		let name = this._nameField.value;
 		this.props.action(name);
-		this._name.value = '';
+		this._nameField.value = '';
 	}
 
 	render(){
 		return (
-			<div>
-				<input type="text" ref={ (input) => this._name = input } />
-				<button className={style.button} type="button" onClick={ this._handleSubmit.bind(this) } >Add new repo</button>
-
-			</div>
+			<form onSubmit={ (e) => this._handleSubmit(e) }>
+				<input type="text" ref={ (input) => this._nameField = input } />
+				<button className={style.button} type="submit" >Add new repo</button>
+			</form>
 
 		)
 	}

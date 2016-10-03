@@ -1,6 +1,94 @@
+@import "~susy/sass/susy";
+
+$fa-font-path: '../../node_modules/font-awesome/fonts';
+
+@import '../../styles/icon-fonts/font-awesome';
+@import '../../styles/icon-fonts/core';
+
+$susy: (
+  gutter-position: inside-static,
+  columns: 6,
+  gutters: 0,
+  global-box-sizing: border-box,
+  use-custom: (
+    clearfix: true,
+  )
+);
+
+
+%col{
+	@include span(100%);
+}
+
+%clearfix{ @include susy-clearfix() }
+
+@mixin clearfix(){
+  @extend %clearfix;
+}
+
 .repoList{
-	float:left;
-	width:300px;
-	height:100vh;
-	background: #ccc;
+	padding:0;
+}
+
+.repoItem{
+	@include clearfix;
+	list-style: none;
+	padding:0 1rem;
+	margin:0;
+	line-height:2;
+
+	&:nth-child(even){
+		background: transparentize(#000, .95);
+	}
+}
+
+.inactive{
+	.label, .controls{
+		opacity:.3;
+	}
+}
+
+.label{
+	@extend %col;
+	width: span(5);
+	font-size:14px;
+
+	&::before{
+		margin-right:.5em;
+	}
+
+}
+
+.controls{
+	@extend %col;
+	width: span(1);
+
+	button{
+		background: none;
+		border:none;
+		outline:none;
+		display:inline-block;
+		position: relative;
+		width: 50%;
+		overflow: hidden;
+		text-indent:-999em;
+		font-size:10px;
+		@include icon(fontawesome, null);
+
+		&::before{
+			text-indent:0;
+			position: absolute;
+			left:0;
+			width:100%;
+			line-height: inherit;
+			text-align: center;
+		}
+
+		&.switch::before{
+			content:$fa-var-power-off
+		}
+		&.update::before{
+			content:$fa-var-refresh
+		}
+	}
 }

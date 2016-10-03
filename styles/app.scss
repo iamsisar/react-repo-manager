@@ -1,7 +1,29 @@
-*, *::before, *::after{
-	box-sizing: border-box
-}
+:global{
 
-body{
-	background:#dedede
+	@import 'typography';
+	$fa-font-path: '~font-awesome/fonts';
+	@import 'icon-fonts/font-awesome';
+	@import 'icon-fonts/core';
+
+
+	*, *::before, *::after{
+		box-sizing: border-box
+	}
+
+
+	body{
+		background:#dedede;
+		@extend %font-body;
+	}
+
+	h1, h2, h3{
+		@extend %font-head;
+	}
+
+	.sidebar{
+		float:left;
+		width:300px;
+		height:100vh;
+		background: #ccc;
+	}
 }
