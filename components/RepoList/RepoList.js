@@ -5,7 +5,7 @@ import AddRepo from '../AddRepo/AddRepo';
 import style from './RepoList.scss';
 
 
-const makeList = ({items}) => (
+const ListItems = ({items}) => (
 	<ul className={style.repoList}>
 	{ items.map( repo => {
 
@@ -48,8 +48,8 @@ const RepoList = ({ repos, addRepo, toggleRepo, updateToTip, onSelectRow }) => {
 
 	return (
 		<div>
-			<makeList items={ repos.filter( repo => repo.isActive ) }  />
-			<makeList items={ repos.filter( repo => !repo.isActive ) }  />
+			<ListItems items={ repos.filter( repo => repo.isActive ) }  />
+			<ListItems items={ repos.filter( repo => !repo.isActive ) }  />
 			<AddRepo action={ addRepo } />
 		</div>
 	)
