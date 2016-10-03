@@ -5,6 +5,33 @@ import AddRepo from '../AddRepo/AddRepo';
 import style from './RepoList.scss';
 
 
+const makeList = ({items}) => (
+	<ul className={style.repoList}>
+	{ items.map( repo => {
+
+	    const className = classNames({
+    		[ style.repoItem ] 	: true,
+			[ style.active ] 	: repo.isActive,
+			[ style.inactive ]	: !repo.isActive
+	    });
+
+		return(
+			<li className={ className } onClick={ () => onSelectRow(repo) } key={repo.id}>
+				<span className={ style.label }>{repo.name}</span>
+				<div className={ style.controls }>
+					<button className={ style.update } type="button" onClick={ (e) => _handleUpdateToTip(e, repo) }>up</button>
+					<button className={ style.switch } type="button" onClick={ (e) => _handleToggle(e, repo) }>{ repo.isActive ? 'off' : 'on' }</button>
+				</div>
+			</li>
+		)
+
+	})}
+	</ul>
+)
+
+
+
+
 const RepoList = ({ repos, addRepo, toggleRepo, updateToTip, onSelectRow }) => {
 
 
@@ -21,28 +48,8 @@ const RepoList = ({ repos, addRepo, toggleRepo, updateToTip, onSelectRow }) => {
 
 	return (
 		<div>
-			<ul className={style.repoList}>
-			{ repos.map( repo => {
-
-			    const className = classNames({
-		    		[ style.repoItem ] 	: true,
-					[ style.active ] 	: repo.isActive,
-					[ style.inactive ]	: !repo.isActive
-			    });
-
-				return(
-					<li className={ className } onClick={ () => onSelectRow(repo) } key={repo.id}>
-						<span className={ style.label }>{repo.name}</span>
-						<div className={ style.controls }>
-							<button className={ style.update } type="button" onClick={ (e) => _handleUpdateToTip(e, repo) }>up</button>
-							<button className={ style.switch } type="button" onClick={ (e) => _handleToggle(e, repo) }>{ repo.isActive ? 'off' : 'on' }</button>
-						</div>
-					</li>
-				)
-
-			})}
-			</ul>
-
+			<makeList items={ repos.filter( repo => repo.isActive ) }  />
+			<makeList items={ repos.filter( repo => !repo.isActive ) }  />
 			<AddRepo action={ addRepo } />
 		</div>
 	)
