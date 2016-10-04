@@ -25,10 +25,11 @@ const _addNewRepo = (name) => {
 	})
 }
 
-const _toggleRepo = (id) => {
+const _toggleRepo = (id, force = null) => {
 	store.dispatch({
 		type: 'TOGGLE_REPO',
-		id: id
+		id: id,
+		force: force
 	})
 }
 

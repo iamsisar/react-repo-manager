@@ -21,9 +21,25 @@
 	}
 
 	.sidebar{
+		$sidebar-background: #cbd0d8;
+		$sidebar-text-color: #2a4365;
+
+		color:$sidebar-text-color;
 		float:left;
 		width:300px;
 		height:100vh;
-		background: #ccc;
+		background: $sidebar-background;
+
+		.row:nth-child(odd){
+
+		}
+		.row{
+			&:nth-child(even){
+				background: lighten($sidebar-background, 2%);
+			}
+			&:nth-child(odd){
+				background: darken($sidebar-background, 5%);
+			}
+		}
 	}
 }

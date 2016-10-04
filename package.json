@@ -24,6 +24,8 @@
     "webpack": "^1.12.12"
   },
   "dependencies": {
+    "babel-preset-stage-2": "^6.17.0",
+    "chart.js": "^2.3.0",
     "classnames": "^2.2.5",
     "normalize.css": "^4.2.0",
     "react": "^15.3.1",

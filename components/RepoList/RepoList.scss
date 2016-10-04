@@ -28,18 +28,24 @@ $susy: (
 
 .repoList{
 	padding:0;
+	margin: 0 0 1.618rem 0;
 }
 
-.repoItem{
+.separator{
+	display: block;
+	clear:both;
+	text-transform: uppercase;
+	font-size:10px;
+	letter-spacing: 1px;
+	font-weight:400;
+}
+
+.repoItem, .bulkControls, .separator{
 	@include clearfix;
 	list-style: none;
 	padding:0 1rem;
 	margin:0;
-	line-height:2;
-
-	&:nth-child(even){
-		background: transparentize(#000, .95);
-	}
+	line-height:2rem;
 }
 
 .inactive{
@@ -61,19 +67,27 @@ $susy: (
 
 .controls{
 	@extend %col;
+	float:right;
+	text-align: right;
 	width: span(1);
 
 	button{
+		cursor:pointer;
 		background: none;
 		border:none;
 		outline:none;
 		display:inline-block;
 		position: relative;
 		width: 50%;
+		color:inherit;
 		overflow: hidden;
 		text-indent:-999em;
 		font-size:10px;
 		@include icon(fontawesome, null);
+
+		&[disabled]{
+			opacity:.5;
+		}
 
 		&::before{
 			text-indent:0;
@@ -89,6 +103,10 @@ $susy: (
 		}
 		&.update::before{
 			content:$fa-var-refresh
+		}
+
+		&.bulkSwitch{
+			font-size:12px;
 		}
 	}
 }
