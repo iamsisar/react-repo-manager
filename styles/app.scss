@@ -1,6 +1,7 @@
 :global{
 
 	@import 'typography';
+	@import 'variables';
 	$fa-font-path: '~font-awesome/fonts';
 	@import 'icon-fonts/font-awesome';
 	@import 'icon-fonts/core';
@@ -21,9 +22,6 @@
 	}
 
 	.sidebar{
-		$sidebar-background: #cbd0d8;
-		$sidebar-text-color: #2a4365;
-
 		color:$sidebar-text-color;
 		float:left;
 		width:300px;
@@ -33,13 +31,18 @@
 		.row:nth-child(odd){
 
 		}
-		.row{
-			&:nth-child(even){
-				background: lighten($sidebar-background, 2%);
-			}
-			&:nth-child(odd){
-				background: darken($sidebar-background, 5%);
-			}
+
+		.separator{
+			border-color:darken($sidebar-background,10%);
+			background-color: darken($sidebar-background,3%);
+			color: darken($sidebar-background,25%)
 		}
+
+		.search input{
+			border:none;
+			border-radius:$input-border-radius;
+			color: lighten($sidebar-text-color,30%);
+		}
+
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import RepoControlPanel from '../RepoControlPanel/RepoControlPanel';
-
+import AddRepo from '../AddRepo/AddRepo';
 import style from './MainPanel.scss';
 
 /*
@@ -12,23 +12,24 @@ import style from './MainPanel.scss';
  * (https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components)
  */
 
-const panelOutput = (screen) => {
 
-	switch (screen.type){
-		case 'WELCOME':
-			return(
-				<span>Benvenuto</span>
-			)
+
+const panelOutput = ({type, ...others}) => {
+
+	switch (type){
+		case 'SCREEN_WELCOME':
+			return <ScreenWelcome />
 		break;
 
-		case 'REPOSITORY':
-			return <RepoControlPanel data={screen.data} />
+		case 'SCREEN_REPOSITORY':
+			return <ScreenRepository {...others} />
 		break;
+
+		case 'SCREEN_ADD_REPOSITORY':
+			return <ScreenAddRepository {...others} />
 
 		default:
-			return(
-				<span>zzz...</span>
-			)
+			return <span>zzz...</span>
 	}
 }
 
@@ -40,6 +41,25 @@ const MainPanel = (props) => (
 			{ panelOutput(props.screen) }
 		</div>
 )
+
+
+const ScreenWelcome = props => {
+	return(
+		<span>Benvenuto</span>
+	)
+}
+
+const ScreenRepository = props => {
+	return(
+		<RepoControlPanel data={props.data} />
+	)
+}
+
+const ScreenAddRepository = props => {
+	return(
+		<AddRepo action={ props.actions.createRepo } />
+	)
+}
 
 
 export default MainPanel;

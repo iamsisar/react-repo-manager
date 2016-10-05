@@ -4,7 +4,7 @@ import fakeData from '../fakeData';
 const repositories = ( state = { list:fakeData, loading: false, error:false }, action ) => {
 	switch( action.type ){
 
-		case 'ADD_REPO' :
+		case 'CREATE_REPO' :
 
             return Object.assign({}, state, {
         		list:[...state.list,

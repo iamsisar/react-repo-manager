@@ -1,6 +1,7 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
 
+import moment from 'moment';
 
 /*
  * Il componente riceve come secondo parametro il context
@@ -24,47 +25,56 @@ const RepoControlPanel = ({ data }, { store }) => {
 		})
 	}
 
-	// let ctx;
 
-	var chartData = {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+    var randomScalingFactor = function() {
+        return (Math.random() > 0.5 ? 1.0 : 0) * Math.round(Math.random() * 10);
     };
 
+    let dataUser1 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+    let dataUser2 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+    let dataTotal = dataUser1.map((c,i) => dataUser1[i] + dataUser2[i] )
+
+	var chartData = {
+        labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+            datasets: [{
+                type: 'bar',
+                label: 'Commits by User1',
+                backgroundColor: "rgba(101,137,155,0.5)",
+                data: dataUser1
+            }, {
+                type: 'bar',
+                label: 'Commits by User2',
+                backgroundColor: "rgba(151,187,205,0.5)",
+                data: dataUser2
+            }, {
+                type: 'line',
+                label: 'Commits per day',
+                data: dataTotal,
+                borderColor: 'rgba(151,187,205,0.5)',
+                backgroundColor: "transparent",
+                borderWidth: 2
+            }]
+    };
+
+    var charOptions = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+
+                }],
+                xAxes: [{
+                    stacked: true
+                }]
+            }
+        };
 
 	return(
 		<div>
-		<h1>Repository {data.id}: {data.name}</h1>
+		<h1>{data.name}<br /><small>{data.url}:{data.port}</small></h1>
 		<button type="button" onClick={ () => _toggleRepo(data.id) }>{ data.isActive ? 'off' : 'on' }</button>
 
-<Bar
-    data={chartData}
-    width={100}
-    height={50}
-    options={{
-        maintainAspectRatio: false
-    }}
-/>
+        <Bar data={chartData} options={charOptions}  width={100} height={30} />
 		</div>
 	)
 }

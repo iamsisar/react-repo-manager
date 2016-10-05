@@ -28,7 +28,15 @@ $susy: (
 
 .repoList{
 	padding:0;
-	margin: 0 0 1.618rem 0;
+}
+
+
+.repoItem, .bulkControls, .separator, .search{
+	@include clearfix;
+	list-style: none;
+	padding:0 1rem;
+	margin:0;
+	line-height:2rem;
 }
 
 .separator{
@@ -37,15 +45,27 @@ $susy: (
 	text-transform: uppercase;
 	font-size:10px;
 	letter-spacing: 1px;
-	font-weight:400;
+	font-weight:bold;
+	border-top:1px solid;
+	margin-top:1rem;
+
+	&:first-child{
+		margin-top:0;
+		border:0;
+	}
 }
 
-.repoItem, .bulkControls, .separator{
-	@include clearfix;
-	list-style: none;
-	padding:0 1rem;
-	margin:0;
-	line-height:2rem;
+.search{
+	padding-top:1rem;
+
+	input{
+		font-size:14px;
+		display: block;
+		padding:0 .5em;
+		width: 100%;
+			outline:none;
+
+	}
 }
 
 .inactive{
@@ -65,29 +85,16 @@ $susy: (
 
 }
 
-.controls{
+.repoItem .controls{
 	@extend %col;
 	float:right;
 	text-align: right;
 	width: span(1);
 
 	button{
-		cursor:pointer;
-		background: none;
-		border:none;
-		outline:none;
-		display:inline-block;
-		position: relative;
-		width: 50%;
-		color:inherit;
-		overflow: hidden;
-		text-indent:-999em;
 		font-size:10px;
-		@include icon(fontawesome, null);
-
-		&[disabled]{
-			opacity:.5;
-		}
+		text-indent:-999em;
+		width: 2em;
 
 		&::before{
 			text-indent:0;
@@ -98,15 +105,58 @@ $susy: (
 			text-align: center;
 		}
 
+
+	}
+}
+
+
+.controls{
+
+	button{
+		cursor:pointer;
+		background: none;
+		border:none;
+		outline:none;
+		display:inline-block;
+		position: relative;
+		color:inherit;
+		overflow: hidden;
+		@include icon(fontawesome, null);
+
+		&::before{
+			margin-right:2em;
+		}
+
+
+		&[disabled]{
+			opacity:.5;
+		}
+
+
 		&.switch::before{
 			content:$fa-var-power-off
+		}
+		@at-root .active &.switch::before{
+			content:$fa-var-toggle-on
+		}
+		@at-root .inactive &.switch::before{
+			content:$fa-var-toggle-off
+		}
+
+		&.add::before{
+			content:$fa-var-plus
 		}
 		&.update::before{
 			content:$fa-var-refresh
 		}
 
-		&.bulkSwitch{
-			font-size:12px;
-		}
 	}
 }
+
+.bulkControls{
+	button{
+		display:block;
+		font-size:12px;
+	}
+}
+

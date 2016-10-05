@@ -18,9 +18,9 @@ require('./styles/app.scss');
  * questi sono i dispatcher usati dallo store per aggiornare lo
  * stato dell'applicazione
  */
-const _addNewRepo = (name) => {
+const _createNewRepo = (name) => {
 	store.dispatch({
-		type: 'ADD_REPO',
+		type: 'CREATE_REPO',
 		name: name
 	})
 }
@@ -57,17 +57,29 @@ class MainApp extends React.Component{
 
 		this.state = {
 			currentScreen : {
-				type: 'WELCOME',
+				type: 'SCREEN_WELCOME',
 				data: {}
 			}
 		}
 	}
 
-	selectRow(repo) {
+	_selectRow(repo) {
 		this.setState({
 			currentScreen : {
-				type: 'REPOSITORY',
+				type: 'SCREEN_REPOSITORY',
 				data: repo
+			}
+		})
+	}
+
+	_handleAddRepo(){
+		this.setState({
+			currentScreen: {
+				type: 'SCREEN_ADD_REPOSITORY',
+				data: {},
+				actions: {
+					createRepo: _createNewRepo
+				}
 			}
 		})
 	}
@@ -77,10 +89,16 @@ class MainApp extends React.Component{
 		return(
 			<div>
 				<div className="sidebar">
-					<RepoList repos={ store.getState().repositories.list } addRepo={ _addNewRepo } toggleRepo={ _toggleRepo } updateToTip={ _updateToTip } onSelectRow={this.selectRow.bind(this)} />
+					<RepoList
+						repos={ store.getState().repositories.list }
+						addNewRepo={ this._handleAddRepo.bind(this) }
+						toggleRepo={ _toggleRepo }
+						updateToTip={ _updateToTip }
+						onSelectRow={this._selectRow.bind(this)}
+					/>
 				</div>
 				<MainPanel screen={this.state.currentScreen} />
-				<button className="button" type="button" onClick={ function(){ console.log(store.getState())}}>getState</button>
+				<button className="button" type="button" onClick={ () => console.log(store.getState()) }>getState</button>
 			</div>
 		)
 	}
