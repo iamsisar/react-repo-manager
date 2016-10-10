@@ -7,9 +7,11 @@ import ReactDOM from 'react-dom';
 import MainPanel from './components/MainPanel/MainPanel';
 import RepoList from './components/RepoList/RepoList';
 import store from './reducers';
+import style from './App.scss';
+
 
 require('normalize.css');
-require('./styles/app.scss');
+require('./styles/themes/default/theme-default.scss');
 
 
 

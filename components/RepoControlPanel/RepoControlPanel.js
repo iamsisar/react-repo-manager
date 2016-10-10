@@ -1,5 +1,7 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
+import chart from './chartSettings';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
 import moment from 'moment';
 
@@ -18,63 +20,20 @@ import moment from 'moment';
 
 const RepoControlPanel = ({ data }, { store }) => {
 
-	const _toggleRepo = (id) => {
+	const _toggleRepo = () => {
 		store.dispatch({
 			type: 'TOGGLE_REPO',
-			id: id
+			id: data.id
 		})
 	}
 
 
-    var randomScalingFactor = function() {
-        return (Math.random() > 0.5 ? 1.0 : 0) * Math.round(Math.random() * 10);
-    };
-
-    let dataUser1 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-    let dataUser2 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-
-    let dataTotal = dataUser1.map((c,i) => dataUser1[i] + dataUser2[i] )
-
-	var chartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
-            datasets: [{
-                type: 'bar',
-                label: 'Commits by User1',
-                backgroundColor: "rgba(101,137,155,0.5)",
-                data: dataUser1
-            }, {
-                type: 'bar',
-                label: 'Commits by User2',
-                backgroundColor: "rgba(151,187,205,0.5)",
-                data: dataUser2
-            }, {
-                type: 'line',
-                label: 'Commits per day',
-                data: dataTotal,
-                borderColor: 'rgba(151,187,205,0.5)',
-                backgroundColor: "transparent",
-                borderWidth: 2
-            }]
-    };
-
-    var charOptions = {
-            scales: {
-                yAxes: [{
-                    stacked: true,
-
-                }],
-                xAxes: [{
-                    stacked: true
-                }]
-            }
-        };
-
 	return(
 		<div>
 		<h1>{data.name}<br /><small>{data.url}:{data.port}</small></h1>
-		<button type="button" onClick={ () => _toggleRepo(data.id) }>{ data.isActive ? 'off' : 'on' }</button>
+		<ToggleSwitch changeCallback={ () => _toggleRepo(data) } checked={data.isActive} />
 
-        <Bar data={chartData} options={charOptions}  width={100} height={30} />
+        <Bar data={chart.chartData} options={chart.chartOptions}  width={100} height={30} />
 		</div>
 	)
 }

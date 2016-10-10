@@ -1,0 +1,19 @@
+:global{
+
+	$fa-font-path: '~font-awesome/fonts';
+	@import 'styles/icon-fonts/font-awesome';
+	@import 'styles/icon-fonts/core';
+
+
+	*, *::before, *::after{
+		box-sizing: border-box
+	}
+
+
+	.sidebar{
+		float:left;
+		width:300px;
+		height:100vh;
+
+	}
+}

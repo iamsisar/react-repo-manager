@@ -2,18 +2,9 @@
 
 	@import 'typography';
 	@import 'variables';
-	$fa-font-path: '~font-awesome/fonts';
-	@import 'icon-fonts/font-awesome';
-	@import 'icon-fonts/core';
-
-
-	*, *::before, *::after{
-		box-sizing: border-box
-	}
-
 
 	body{
-		background:#dedede;
+		background:$body-background;
 		@extend %font-body;
 	}
 
@@ -23,13 +14,16 @@
 
 	.sidebar{
 		color:$sidebar-text-color;
-		float:left;
-		width:300px;
-		height:100vh;
 		background: $sidebar-background;
 
-		.row:nth-child(odd){
+		.row{
+			&:hover{
+				background: lighten($sidebar-background,3%)
+			}
 
+			&.selected{
+				background: $body-background;
+			}
 		}
 
 		.separator{
