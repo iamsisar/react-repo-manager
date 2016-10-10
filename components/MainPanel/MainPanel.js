@@ -14,52 +14,42 @@ import style from './MainPanel.scss';
 
 
 
-const panelOutput = ({type, ...others}) => {
+const MainPanel = ({type, ...data}) => {
 
 	switch (type){
 		case 'SCREEN_WELCOME':
-			return <ScreenWelcome />
+			return(
+			<div className={style.mainPanel}>
+				<span>Benvenuto</span>
+			</div>
+			)
 		break;
 
 		case 'SCREEN_REPOSITORY':
-			return <ScreenRepository {...others} />
+			return(
+			<div className={style.mainPanel}>
+				<RepoControlPanel {...data} />
+			</div>
+			)
 		break;
 
 		case 'SCREEN_ADD_REPOSITORY':
-			return <ScreenAddRepository {...others} />
+			return(
+			<div className={style.mainPanel}>
+				<AddRepo {...data} />
+			</div>
+			)
 
 		default:
-			return <span>zzz...</span>
+			return(
+			<div className={style.mainPanel}>
+				<span>zzz...</span>
+			</div>
+			)
 	}
+
 }
 
-
-
-const MainPanel = (props) => (
-
-		<div className={style.mainPanel}>
-			{ panelOutput(props.screen) }
-		</div>
-)
-
-
-const ScreenWelcome = props => {
-	return(
-		<span>Benvenuto</span>
-	)
-}
-
-const ScreenRepository = props => {
-	return(
-		<RepoControlPanel data={props.data} />
-	)
-}
-
-const ScreenAddRepository = props => {
-	return(
-		<AddRepo action={ props.actions.createRepo } />
-	)
-}
 
 
 export default MainPanel;

@@ -32,7 +32,6 @@ const RepoControlPanel = ({ data }, { store }) => {
 		<div>
 		<h1>{data.name}<br /><small>{data.url}:{data.port}</small></h1>
 		<ToggleSwitch changeCallback={ () => _toggleRepo(data) } checked={data.isActive} />
-
         <Bar data={chart.chartData} options={chart.chartOptions}  width={100} height={30} />
 		</div>
 	)

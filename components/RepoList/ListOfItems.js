@@ -50,7 +50,10 @@ const ListOfItems = ({ items, addRepo, toggleRepo, updateToTip, onSelectItem, se
 						<li className={ className } onClick={ () => _handleSelectItem(repo) } key={repo.id}>
 							<span className={ style.label }>{repo.name}</span>
 							<div className={ style.controls }>
-								<button className={ style.update } type="button" onClick={ (e) => _handleUpdateToTip(e, repo) }>up</button>
+								{ (repo.isActive)
+									? <button className={ style.update } type="button" onClick={ (e) => _handleUpdateToTip(e, repo) }>up</button>
+									: null
+								}
 								<ToggleSwitch changeCallback={ () => _handleToggle(repo) } checked={repo.isActive} />
 							</div>
 						</li>

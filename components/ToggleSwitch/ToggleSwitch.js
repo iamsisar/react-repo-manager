@@ -11,7 +11,7 @@ const ToggleSwitch = ({changeCallback, checked, label, disabled, }) => {
 
 	return (
 		<div className={style.toggleSwitch + ' toggle-switch'} onClick={ (e) => e.stopPropagation() }>
-	      <input type="checkbox" defaultChecked={checked} disabled={disabled} onChange={_handleChange} />
+	      <input type="checkbox" checked={checked} disabled={disabled} onChange={_handleChange} />
 	      <label>{label}</label>
 	    </div>
 	)

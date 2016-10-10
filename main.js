@@ -99,7 +99,7 @@ class MainApp extends React.Component{
 						onSelectRow={this._selectRow.bind(this)}
 					/>
 				</div>
-				<MainPanel screen={this.state.currentScreen} />
+				<MainPanel {...this.state.currentScreen} />
 				<button className="button" type="button" onClick={ () => console.log(store.getState()) }>getState</button>
 			</div>
 		)
