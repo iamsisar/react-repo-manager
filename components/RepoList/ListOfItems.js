@@ -14,13 +14,12 @@ const transitionName = {
 	leaveActive: `${style.animLeaveActive}`
 }
 
-const transitionDuration = 300;
 
 const ListOfItems = ({ items, addRepo, toggleRepo, updateToTip, onSelectItem, selectedItems }) => {
 
 	const _handleToggle = (repo) => {
 
-		let asd = setTimeout(() => toggleRepo(repo.id), transitionDuration/2);
+		toggleRepo(repo.id)
 	}
 
 	const _handleUpdateToTip = (e, repo) => {
@@ -33,33 +32,35 @@ const ListOfItems = ({ items, addRepo, toggleRepo, updateToTip, onSelectItem, se
 	}
 
 	return (
-		<ul className={style.repoList}>
-			<ReactCSSTransitionGroup
-				transitionName={transitionName} transitionEnterTimeout={transitionDuration} transitionLeaveTimeout={transitionDuration} >
-				{items.map( repo => {
+		<ReactCSSTransitionGroup
+			component="ul"
+			className={style.repoList}
+			transitionName={transitionName}
+			transitionEnterTimeout={2000}
+			transitionLeaveTimeout={300} >
+			{items.map( repo => {
 
-			    const className = classNames({
-		    		[ style.repoItem ] 	: true,
-					[ style.active ] 	: repo.isActive,
-					[ style.inactive ]	: !repo.isActive,
-					'selected'			: selectedItems === repo.id,
-					'row'				: true
-			    });
+		    const className = classNames({
+	    		[ style.repoItem ] 	: true,
+				[ style.active ] 	: repo.isActive,
+				[ style.inactive ]	: !repo.isActive,
+				'selected'			: selectedItems === repo.id,
+				'row'				: true
+		    });
 
-				return(
-						<li className={ className } onClick={ () => _handleSelectItem(repo) } key={repo.id}>
-							<span className={ style.label }>{repo.name}</span>
-							<div className={ style.controls }>
-								{ (repo.isActive)
-									? <button className={ style.update } type="button" onClick={ (e) => _handleUpdateToTip(e, repo) }>up</button>
-									: null
-								}
-								<ToggleSwitch changeCallback={ () => _handleToggle(repo) } checked={repo.isActive} />
-							</div>
-						</li>
-				)})}
-			</ReactCSSTransitionGroup>
-		</ul>
+			return(
+					<li className={ className } onClick={ () => _handleSelectItem(repo) } key={repo.id}>
+						<span className={ style.label }>{repo.name}</span>
+						<div className={ style.controls }>
+							{ (repo.isActive)
+								? <button className={ style.update } type="button" onClick={ (e) => _handleUpdateToTip(e, repo) }>up</button>
+								: null
+							}
+							<ToggleSwitch changeCallback={ () => _handleToggle(repo) } checked={repo.isActive} />
+						</div>
+					</li>
+			)})}
+		</ReactCSSTransitionGroup>
 	)
 }
 

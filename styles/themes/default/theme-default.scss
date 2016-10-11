@@ -23,6 +23,7 @@
 
 			&.selected{
 				background: $body-background;
+				animation:none;
 			}
 		}
 
@@ -37,6 +38,21 @@
 			border-radius:$input-border-radius;
 			color: lighten($sidebar-text-color,30%);
 		}
+	}
 
+	.toggle-switch{
+		label{
+			background: $toggle-track-background!important;
+			&::after{
+				background: $toggle-cursor-off-background!important;
+			}
+		}
+
+		input:checked + label{
+			&:after{
+				background: $toggle-cursor-on-background!important;
+				border-color: $toggle-cursor-on-border!important;
+			}
+		}
 	}
 }
