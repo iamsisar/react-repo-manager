@@ -12,11 +12,14 @@ class AddRepo extends React.Component{
 	_handleSubmit(e){
 		e.preventDefault();
 		let name = this._nameField.value;
-		this.props.action(name);
+		this.props.actions.createRepo(name);
 		this._nameField.value = '';
 	}
 
 	render(){
+
+		console.log(this.props);
+
 		return (
 			<form onSubmit={ this._handleSubmit }>
 				<input type="text" ref={ (input) => this._nameField = input } />

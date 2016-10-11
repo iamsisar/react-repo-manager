@@ -1,5 +1,31 @@
 import fakeData from '../fakeData';
 
+function getJSON(url, success, error) {
+  'use strict';
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        success(JSON.parse(xhr.responseText));
+      } else {
+        error(xhr.responseText);
+      }
+    }
+  };
+  xhr.open('GET', url);
+  xhr.send();
+}
+
+
+function getInitialStateRepos() {
+	getJSON('http://localhost:3334/repos', function (repos) {
+		console.log(repos);
+		return repos;
+	});
+}
+
+const INTIAL_STATE_REPOS = getInitialStateRepos();
+
 
 const repositories = ( state = { list:fakeData, loading: false, error:false }, action ) => {
 	switch( action.type ){
