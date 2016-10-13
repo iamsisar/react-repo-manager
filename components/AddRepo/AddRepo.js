@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import style from './AddRepo.scss';
 
 class AddRepo extends React.Component{
@@ -12,13 +13,11 @@ class AddRepo extends React.Component{
 	_handleSubmit(e){
 		e.preventDefault();
 		let name = this._nameField.value;
-		this.props.actions.createRepo(name);
+		this.props.createNewRepo(name);
 		this._nameField.value = '';
 	}
 
 	render(){
-
-		console.log(this.props);
 
 		return (
 			<form onSubmit={ this._handleSubmit }>

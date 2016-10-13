@@ -1,11 +1,13 @@
 import React from 'react';
 import ListOfItems from './ListOfItems';
+import ManageRepos from '../../containers/ManageRepos';
+import VisibleListOfItems from '../../containers/VisibleListOfItems';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import style from './RepoList.scss';
 
 const propTypes = {
 	repos: React.PropTypes.array,
-	addNewRepo: React.PropTypes.func,
+	addRepo: React.PropTypes.func,
 	toggleRepo: React.PropTypes.func,
 	updateToTip: React.PropTypes.func,
 	onSelectRow: React.PropTypes.func,
@@ -22,13 +24,6 @@ class RepoList extends React.Component{
 
 		this._selectItem = this._selectItem.bind(this);
 		this._updateOnSearch = this._updateOnSearch.bind(this)
-		this._handleTurnOffAll = this._handleTurnOffAll.bind(this)
-	}
-
-
-	_handleTurnOffAll(){
-		const { repos, toggleRepo } = this.props;
-		if ( confirm('This will switch all repositories OFF. Are you sure?') ) toggleRepo( repos.map((repo) => repo.id ) , 'off');
 	}
 
 
@@ -44,7 +39,7 @@ class RepoList extends React.Component{
 		this.setState({searchString: e.target.value})
 	}
 
-	_filterLists(repo, condition){
+	_getNameFilter(repo, condition){
 		return this.state.searchString !== ''
 			? condition && repo.name.toLowerCase().indexOf(this.state.searchString.toLowerCase()) !== -1
 			: condition;
@@ -52,7 +47,7 @@ class RepoList extends React.Component{
 
 	render(){
 
-		const { repos, addNewRepo, onSelectRow, ...others } = this.props;
+		const { repos, addRepo, onSelectRow, ...others } = this.props;
 		const countActive = repos.filter((repo) => repo.isActive).length;
 		const countInactive = repos.filter((repo) => !repo.isActive).length;
 
@@ -60,16 +55,7 @@ class RepoList extends React.Component{
 
 			<div>
 				<span className={ style.separator + ' ' + 'separator' } >Manage</span>
-				<div className={ style.bulkControls }>
-					<div className={ style.controls }>
-						<div className="row">
-							<button className={ style.add } type="button" onClick={ addNewRepo } >Add New Repo</button>
-						</div>
-						<div className="row">
-							<button className={ style.switch } disabled={countActive === 0} type="button" onClick={ this._handleTurnOffAll }>Switch all off</button>
-						</div>
-					</div>
-				</div>
+				<ManageRepos addRepo={addRepo} />
 
 				<span className={ style.separator + ' ' + 'separator' } >Search</span>
 				<div className={ style.search  + ' ' + 'search' } >
@@ -77,21 +63,18 @@ class RepoList extends React.Component{
 				</div>
 
 				<span className={ style.separator  + ' ' + 'separator' } >Active ({ countActive })</span>
-					<ListOfItems
-						onSelectItem={ this._selectItem }
-						selectedItems={this.state.selectedItems}
-						items={ repos.filter( repo => this._filterLists(repo, repo.isActive) ) }
-						{...others}
-					/>
+				<VisibleListOfItems
+					filter={ (repo) => this._getNameFilter(repo, repo.isActive) }
+					onSelectItem={this._selectItem}
+					selectedItems={this.state.selectedItems}
+				/>
 
 				<span className={ style.separator  + ' ' + 'separator' } >Inactive ({ countInactive })</span>
-
-					<ListOfItems
-						onSelectItem={this._selectItem}
-						selectedItems={this.state.selectedItems}
-						items={ repos.filter( repo => this._filterLists(repo, !repo.isActive) ) }
-						{...others}
-					/>
+				<VisibleListOfItems
+					filter={ (repo) => this._getNameFilter(repo, !repo.isActive) }
+					onSelectItem={this._selectItem}
+					selectedItems={this.state.selectedItems}
+				/>
 
 			</div>
 		)

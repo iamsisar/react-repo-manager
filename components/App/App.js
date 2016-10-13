@@ -1,21 +1,11 @@
-import { connect } from 'react-redux'
-import { Provider } from 'react-redux'
-
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import MainPanel from './components/MainPanel/MainPanel';
-import RepoList from './components/RepoList/RepoList';
-import store from './reducers';
-import {fetchRepos, fetchReposSuccess, fetchReposFailure} from './actions/repos';
-import style from './components/App/App.scss';
+import MainPanel from '../MainPanel/MainPanel';
+import RepoList from '../RepoList/RepoList';
+import fetchPosts from '../../actions/repos';
+import style from './App.scss';
 
 
-require('normalize.css');
-require('./styles/themes/default/theme-default.scss');
-
-
-class MainApp extends React.Component{
+class App extends React.Component{
 
 
 	/*
@@ -35,16 +25,15 @@ class MainApp extends React.Component{
 			}
 		}
 	}
-
 	componentWillMount(){
 
-		store
+		this.store
 			.dispatch(fetchRepos()).payload
 			.then((response) => {
 				console.log(response);
 	            !response.error
-	            ? store.dispatch(fetchReposSuccess(response.data))
-	            : store.dispatch(fetchReposFailure(response.data));
+	            ? this.store.dispatch(fetchReposSuccess(response.data))
+	            : this.store.dispatch(fetchReposFailure(response.data));
         	});
 	}
 
@@ -84,13 +73,4 @@ class MainApp extends React.Component{
 	}
 }
 
-const renderApp = () => ReactDOM.render(
-	<Provider store={store}>
-		<MainApp />
-	</Provider>
-, document.getElementById('app'));
-
-store.subscribe(renderApp);
-
-renderApp();
-
+export default 'App';

@@ -1,7 +1,7 @@
 {
   "repos": [{
     "id": 0,
-    "name": "Buzness",
+    "name": "Buzness Pinoloide",
     "isActive": true,
     "port": 8007,
     "idle": false,

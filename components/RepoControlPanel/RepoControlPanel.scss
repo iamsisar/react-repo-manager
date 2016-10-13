@@ -1,5 +1,11 @@
 .repoControlPanel{
 
+	h1{
+		strong, small{
+			display:block;
+		}
+	}
+
 	:global(.toggle-switch){
 		font-size:30px;
 	}

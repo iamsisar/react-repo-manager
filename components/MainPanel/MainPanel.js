@@ -1,6 +1,6 @@
 import React from 'react';
-import RepoControlPanel from '../RepoControlPanel/RepoControlPanel';
-import AddRepo from '../AddRepo/AddRepo';
+import ManageRepo from '../../containers/ManageRepo';
+import PanelAddRepo from '../../containers/PanelAddRepo';
 import style from './MainPanel.scss';
 
 /*
@@ -28,7 +28,7 @@ const MainPanel = ({type, ...data}) => {
 		case 'SCREEN_REPOSITORY':
 			return(
 			<div className={style.mainPanel}>
-				<RepoControlPanel {...data} />
+				<ManageRepo {...data} />
 			</div>
 			)
 		break;
@@ -36,7 +36,7 @@ const MainPanel = ({type, ...data}) => {
 		case 'SCREEN_ADD_REPOSITORY':
 			return(
 			<div className={style.mainPanel}>
-				<AddRepo {...data} />
+				<PanelAddRepo {...data} />
 			</div>
 			)
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"json-server --watch db.json --port 3334\" \"webpack-dev-server --inline --hot\""
+    "start": "concurrently --raw \"json-server --watch db.json --port 3334\" \"webpack-dev-server --inline --hot\""
   },
   "author": "",
   "license": "ISC",
@@ -24,9 +24,11 @@
     "webpack": "^1.12.12"
   },
   "dependencies": {
+    "axios": "^0.15.0",
     "babel-preset-stage-2": "^6.17.0",
     "chart.js": "^2.3.0",
     "classnames": "^2.2.5",
+    "fetch": "^1.1.0",
     "moment": "^2.15.1",
     "normalize.css": "^4.2.0",
     "react": "^15.3.1",

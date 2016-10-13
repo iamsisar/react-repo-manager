@@ -25,7 +25,6 @@ class ToggleSwitch extends React.Component{
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.checked !== this.props.checked){
-			console.log('receiveprops');
 			this.setState({
 				checked : nextProps.checked
 			});

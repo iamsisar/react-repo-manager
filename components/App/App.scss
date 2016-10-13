@@ -1,8 +1,8 @@
 :global{
 
 	$fa-font-path: '~font-awesome/fonts';
-	@import 'styles/icon-fonts/font-awesome';
-	@import 'styles/icon-fonts/core';
+	@import '../../styles/icon-fonts/font-awesome';
+	@import '../../styles/icon-fonts/core';
 
 
 	*, *::before, *::after{
