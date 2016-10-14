@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently --raw \"json-server --watch db.json --port 3334\" \"webpack-dev-server --inline --hot\"",
-    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js"
+    "dist": "NODE_ENV=production webpack -p --config webpack.config.production.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "node-sass": "^3.10.0",
     "sass-loader": "^4.0.2",

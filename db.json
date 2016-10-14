@@ -2,7 +2,7 @@
   "repos": [
     {
       "id": 0,
-      "name": "Buzness Pinoloide",
+      "name": "Golf",
       "isActive": true,
       "port": 8007,
       "idle": false,
@@ -253,6 +253,10 @@
       "port": 8031,
       "idle": false,
       "url": "bedlam.meloriacomunicazione.com"
+    },
+    {
+      "name": "pippo",
+      "id": 10
     }
   ]
 }
