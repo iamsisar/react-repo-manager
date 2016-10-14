@@ -3,6 +3,17 @@ import React from 'react';
 import style from './ToggleSwitch.scss';
 
 
+const propTypes = {
+	checked: React.PropTypes.bool,
+	changeCallback: React.PropTypes.func,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.bool
+	]),
+	disabled: React.PropTypes.bool
+};
+
+
 class ToggleSwitch extends React.Component{
 
 	constructor(props){
@@ -44,5 +55,7 @@ class ToggleSwitch extends React.Component{
 		)
 	}
 }
+
+ToggleSwitch.propTypes = propTypes;
 
 export default ToggleSwitch;

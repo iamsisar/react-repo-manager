@@ -3,17 +3,25 @@ import App from '../components/App/App';
 import { fetchRepos, fetchReposSuccess, fetchReposFailure } from '../actions/repos';
 
 
+const mapStateToProps = (state) => {
+  return{
+    repos: state.repositories.list
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchRepos: () => dispatch(fetchRepos()),
-    fetchReposSuccess: (repos) => dispatch(fetchReposSuccess(repos)),
-    fetchReposFailure: (error) => dispatch(fetchReposFailure(error)),
+    requireRepos: () => dispatch(fetchRepos()).payload
+      .then((response) => {
+              !response.error
+              ? dispatch(fetchReposSuccess(response.data))
+              : dispatch(fetchReposFailure(response.data));
+    })
   }
 }
 
 const MainAppContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
 

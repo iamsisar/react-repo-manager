@@ -1,6 +1,11 @@
 import React from "react";
 import style from './RepoList.scss';
 
+const propTypes = {
+	repos: React.PropTypes.array,
+	addRepo: React.PropTypes.func,
+	toggleRepo: React.PropTypes.func
+}
 
 const RepoListTools = ({repos, addRepo, toggleRepo}) => {
 
@@ -24,6 +29,8 @@ const RepoListTools = ({repos, addRepo, toggleRepo}) => {
 		</div>
 	)
 }
+
+RepoListTools.propTypes = propTypes;
 
 export default RepoListTools;
 

@@ -4,14 +4,17 @@ import PanelAddRepo from '../../containers/PanelAddRepo';
 import style from './MainPanel.scss';
 
 /*
- * Il componente riceve in props.screen la rappresentazione
- * della schermata da visualizzare.
- *
- * Deve solo renderizzare elementi in base a props, quindi lo
- * trattiamo come stateless functional component
- * (https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components)
+ * Il componente riceve la rappresentazione
+ * della schermata da visualizzare. In base
+ * al valore di props.type renderizza il
+ * componente opportuno a cui vengono passate
+ * props.data
  */
 
+const propTypes = {
+	type: React.PropTypes.string,
+	data: React.PropTypes.object
+};
 
 
 const MainPanel = ({type, ...data}) => {
@@ -39,6 +42,7 @@ const MainPanel = ({type, ...data}) => {
 				<PanelAddRepo {...data} />
 			</div>
 			)
+		break;
 
 		default:
 			return(
@@ -50,6 +54,6 @@ const MainPanel = ({type, ...data}) => {
 
 }
 
-
+MainPanel.propTypes = propTypes;
 
 export default MainPanel;

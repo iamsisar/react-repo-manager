@@ -28,6 +28,15 @@ $susy: (
 
 .repoList{
 	padding:0;
+
+	:global(.toggle-switch){
+		font-size:1.2em;
+	}
+
+	:global(.update-button){
+		font-size:1.2em;
+	}
+
 }
 
 
@@ -91,28 +100,17 @@ $susy: (
 	text-align: right;
 	width: span(3 of 10);
 	font-size:13px;
-
-	button{
-		font-size:10px;
-		text-indent:-999em;
-		width: 2em;
-
-		&::before{
-			text-indent:0;
-			position: absolute;
-			left:0;
-			line-height: inherit;
-			text-align: center;
-		}
-
-
-	}
 }
 
 
-.controls{
+.manageTools{
+	padding-left:0;
+	padding-right:0;
 
 	button{
+		display:block;
+		font-size:12px;
+		padding-left:2em;
 		cursor:pointer;
 		background: none;
 		text-align:left;
@@ -138,32 +136,13 @@ $susy: (
 		&.switch::before{
 			content:$fa-var-power-off
 		}
-		@at-root .active &.switch::before{
-			content:$fa-var-toggle-on
-		}
-		@at-root .inactive &.switch::before{
-			content:$fa-var-toggle-off
-		}
 
 		&.add::before{
 			content:$fa-var-plus
 		}
-		&.update::before{
-			content:$fa-var-refresh
-		}
-
 	}
 }
 
-.manageTools{
-	padding-left:0;
-	padding-right:0;
-	button{
-		display:block;
-		font-size:12px;
-		padding-left:2em;
-	}
-}
 
 .animEnter {
     opacity: 0;

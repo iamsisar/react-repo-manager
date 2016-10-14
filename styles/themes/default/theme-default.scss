@@ -55,4 +55,13 @@
 			}
 		}
 	}
+
+	.update-button{
+		span{
+			background: $update-button-background!important;
+			&::before{
+				color:$update-button-foreground
+			}
+		}
+	}
 }

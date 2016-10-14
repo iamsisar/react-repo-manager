@@ -26,14 +26,12 @@ class RepoList extends React.Component{
 		this._updateOnSearch = this._updateOnSearch.bind(this)
 	}
 
-
 	_selectItem(repo){
 		this.props.onSelectRow(repo);
 		this.setState({
 			selectedItems: repo.id
 		})
 	}
-
 
 	_updateOnSearch(e){
 		this.setState({searchString: e.target.value})
