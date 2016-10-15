@@ -3,14 +3,10 @@
 	@import 'typography';
 	@import 'variables';
 
-	.cazzo{
-	}
 
 	body{
 		background:$body-background;
 		@extend %font-body;
-				display:flex
-
 	}
 
 	h1, h2, h3{
