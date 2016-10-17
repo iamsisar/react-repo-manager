@@ -4,7 +4,7 @@ import { createNewRepo, createNewRepoSuccess, createNewRepoFailure } from '../ac
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		createNewRepo: (name) => dispatch(createNewRepo(name)).payload
+		createNewRepo: (name, url) => dispatch(createNewRepo(name, url)).payload
 			.then((response) => {
 				console.log(response);
 				!response.error

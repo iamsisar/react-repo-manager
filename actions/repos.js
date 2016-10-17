@@ -14,6 +14,17 @@ export const TOGGLE_REPO = 'TOGGLE_REPO';
 export const UPDATE_TO_TIP = 'UPDATE_TO_TIP';
 
 
+import firebase from('firebase/app');
+require('firebase/database');
+
+const app = firebase.initializeApp({
+	apiKey: "AIzaSyD3dKzNeftSSogQbTIjLqZYbGau6RTXBn0",
+    authDomain: "repo-manager-demo.firebaseapp.com",
+    databaseURL: "https://repo-manager-demo.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "287673014735"
+});
+
 
 /*
  * In redux conviene usare dei "creators" per incapsulare
@@ -48,12 +59,13 @@ export function fetchReposFailure(error) {
 }
 
 
-export function createNewRepo(name){
+export function createNewRepo(name, url){
 	const request = axios({
 		method: 'post',
 		url: `${SERVER_URL}/repos`,
 		data: {
-		    name: name
+			name: name,
+			url: url
 		}
 	});
 

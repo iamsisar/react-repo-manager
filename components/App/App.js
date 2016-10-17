@@ -1,7 +1,7 @@
 import React from 'react';
 import MainPanel from '../MainPanel/MainPanel';
 import RepoList from '../RepoList/RepoList';
-import style from './App.scss';
+import './App.scss';
 
 const propTypes = {
 	repos: React.PropTypes.array,

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import RepoControlPanel from '../components/RepoControlPanel/RepoControlPanel';
 import { toggleRepo, updateToTip } from '../actions/repos';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 	return {
 		repo: state.repositories.list
 	}

@@ -1,8 +1,6 @@
 import React from 'react';
-import ListOfItems from './ListOfItems';
 import ManageRepos from '../../containers/ManageRepos';
 import VisibleListOfItems from '../../containers/VisibleListOfItems';
-import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import style from './RepoList.scss';
 
 const propTypes = {
@@ -45,7 +43,7 @@ class RepoList extends React.Component{
 
 	render(){
 
-		const { repos, addRepo, onSelectRow, ...others } = this.props;
+		const { repos, addRepo } = this.props;
 		const countActive = repos.filter((repo) => repo.isActive).length;
 		const countInactive = repos.filter((repo) => !repo.isActive).length;
 

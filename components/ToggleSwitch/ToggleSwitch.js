@@ -31,7 +31,8 @@ class ToggleSwitch extends React.Component{
 		this.setState({
 			checked : !this.state.checked
 		})
-		let t = setTimeout(() => this.props.changeCallback(), 300);
+
+		setTimeout(() => this.props.changeCallback(), 300)
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -45,13 +46,13 @@ class ToggleSwitch extends React.Component{
 
 	render(){
 
-		let {changeCallback, checked, label, disabled} = this.props;
+		let {label, disabled} = this.props;
 
 		return (
 			<div className={style.toggleSwitch + ' toggle-switch'} onClick={ (e) => e.stopPropagation() }>
-		      <input type="checkbox" checked={this.state.checked} disabled={disabled} onChange={this._handleChange} />
-		      <label>{label}</label>
-		    </div>
+				<input type="checkbox" checked={this.state.checked} disabled={disabled} onChange={this._handleChange} />
+				<label>{label}</label>
+			</div>
 		)
 	}
 }

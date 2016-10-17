@@ -26,7 +26,6 @@ const MainPanel = ({type, ...data}) => {
 				<span>Benvenuto</span>
 			</div>
 			)
-		break;
 
 		case 'SCREEN_REPOSITORY':
 			return(
@@ -34,7 +33,6 @@ const MainPanel = ({type, ...data}) => {
 				<ManageRepo {...data} />
 			</div>
 			)
-		break;
 
 		case 'SCREEN_ADD_REPOSITORY':
 			return(
@@ -42,7 +40,6 @@ const MainPanel = ({type, ...data}) => {
 				<PanelAddRepo {...data} />
 			</div>
 			)
-		break;
 
 		default:
 			return(
