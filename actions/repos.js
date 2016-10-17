@@ -14,7 +14,7 @@ export const TOGGLE_REPO = 'TOGGLE_REPO';
 export const UPDATE_TO_TIP = 'UPDATE_TO_TIP';
 
 
-import firebase from('firebase/app');
+import firebase from 'firebase/app';
 require('firebase/database');
 
 const app = firebase.initializeApp({
