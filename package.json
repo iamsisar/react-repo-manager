@@ -44,6 +44,7 @@
     "chart.js": "^2.3.0",
     "classnames": "^2.2.5",
     "fetch": "^1.1.0",
+    "firebase": "^3.5.0",
     "font-awesome": "^4.6.3",
     "normalize.css": "^4.2.0",
     "react": "^15.3.1",

@@ -66,7 +66,7 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 					{
 						name: action.repo.name,
 						id: (state.list.length ? state.list.length : 1),
-						url: 'url.url.irl',
+						url: action.repo.url,
 						port: (state.list.length ? state.list[state.list.length - 1].port + 1 : 8000),
 						isActive: true,
 						idle: false

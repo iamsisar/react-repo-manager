@@ -253,14 +253,6 @@
       "port": 8031,
       "idle": false,
       "url": "bedlam.meloriacomunicazione.com"
-    },
-    {
-      "name": "pippo",
-      "id": 10
-    },
-    {
-      "name": "sadfw",
-      "id": 11
     }
   ]
 }
