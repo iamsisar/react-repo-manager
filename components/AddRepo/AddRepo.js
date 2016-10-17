@@ -3,6 +3,11 @@ import React from 'react';
 
 import style from './AddRepo.scss';
 
+
+const propTypes = {
+	createNewRepo: React.PropTypes.func
+}
+
 class AddRepo extends React.Component{
 
 	constructor(){
@@ -28,5 +33,7 @@ class AddRepo extends React.Component{
 		)
 	}
 }
+
+AddRepo.propTypes = propTypes;
 
 export default AddRepo;

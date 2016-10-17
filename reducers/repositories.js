@@ -22,7 +22,6 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 				...state,
 				loading: true
 			};
-			break;
 
 
 		case FETCH_REPOS_SUCCESS:
@@ -32,17 +31,14 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 				error:null,
 				loading: false
 			};
-			break;
 
 
 		case FETCH_REPOS_FAILURE:
-			error = action.payload.data;
 			return {
 				list: [],
-				error: error,
+				error: action.payload.data,
 				loading: false
 			}
-			break;
 
 
 		case RESET_REPOS:
@@ -51,7 +47,6 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 				error:null,
 				loading: false
 			};
-			break;
 
 		case CREATE_REPO :
 
@@ -60,7 +55,6 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 				loading:true
 			}
 
-			break;
 
 		case CREATE_REPO_SUCCESS :
 
@@ -80,7 +74,15 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 				]
 			};
 
-			break;
+
+		case CREATE_REPO_FAILURE :
+
+			return {
+				...state,
+				loading: false,
+				error: action.payload.data
+			};
+
 
 		case TOGGLE_REPO :
 
@@ -99,16 +101,15 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 				}),
 			}
 
-			break;
 
 		case UPDATE_TO_TIP :
+			alert('update to tip repo ' + action.id)
+		break;
 
-				alert('update to tip repo ' + action.id)
-
-			break;
 
 		default:
 			return state;
+
 	}
 }
 

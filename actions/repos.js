@@ -53,7 +53,7 @@ export function createNewRepo(name){
 		method: 'post',
 		url: `${SERVER_URL}/repos`,
 		data: {
-		    name: name
+			name: name
 		}
 	});
 

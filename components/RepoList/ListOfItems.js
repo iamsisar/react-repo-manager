@@ -22,23 +22,18 @@ const propTypes = {
 		React.PropTypes.number,
 		React.PropTypes.bool
 	]),
-	addRepo: React.PropTypes.func,
 	toggleRepo: React.PropTypes.func,
 	updateToTip: React.PropTypes.func,
 	onSelectItem: React.PropTypes.func
 };
 
 
-const ListOfItems = ({ items, addRepo, toggleRepo, updateToTip, onSelectItem, selectedItems }) => {
+const ListOfItems = ({ items, toggleRepo, updateToTip, onSelectItem, selectedItems }) => {
 
 	const _handleToggle = (repo) => {
 		toggleRepo(repo.id)
 	}
 
-	const _handleUpdateToTip = (e, repo) => {
-		e.stopPropagation();
-		updateToTip(repo.id);
-	}
 
 	const _handleSelectItem = (repo) => {
 		onSelectItem(repo);
@@ -53,20 +48,20 @@ const ListOfItems = ({ items, addRepo, toggleRepo, updateToTip, onSelectItem, se
 			transitionLeaveTimeout={300} >
 			{items.map( repo => {
 
-			    const className = classNames({
-		    		[ style.repoItem ] 	: true,
+				const className = classNames({
+					[ style.repoItem ] 	: true,
 					[ style.active ] 	: repo.isActive,
 					[ style.inactive ]	: !repo.isActive,
 					'selected'			: selectedItems === repo.id,
 					'row'				: true
-			    });
+				});
 
 				return(
 					<li className={ className } onClick={ () => _handleSelectItem(repo) } key={repo.id}>
 						<span className={ style.label }>{repo.name}</span>
 						<div className={ style.controls }>
 							{ (repo.isActive)
-								? <UpdateButton clickCallback={ () => updateToTip(id) }  />
+								? <UpdateButton clickCallback={ () => updateToTip(repo.id) }  />
 								: null
 							}
 							<ToggleSwitch changeCallback={ () => _handleToggle(repo) } checked={repo.isActive} />

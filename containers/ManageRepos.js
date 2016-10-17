@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import RepoListTools from '../components/RepoList/RepoListTools';
 import { toggleRepo, updateToTip } from '../actions/repos';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 	return {
 		repos: state.repositories.list
 	}

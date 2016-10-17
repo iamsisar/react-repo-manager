@@ -8,7 +8,8 @@ import style from './RepoControlPanel.scss';
 
 const propTypes = {
 	data: React.PropTypes.object,
-	toggleRepo: React.PropTypes.func
+	toggleRepo: React.PropTypes.func,
+	updateToTip: React.PropTypes.func
 };
 
 const RepoControlPanel = ({ data, toggleRepo, updateToTip }) => {
@@ -25,7 +26,7 @@ const RepoControlPanel = ({ data, toggleRepo, updateToTip }) => {
 				<ToggleSwitch changeCallback={ () => toggleRepo(id) } checked={isActive} />
 				<UpdateButton clickCallback={ () => updateToTip(id) } />
 			</div>
-	        <Bar data={chart.chartData} options={chart.chartOptions}  width={100} height={30} />
+			<Bar data={chart.chartData} options={chart.chartOptions}  width={100} height={30} />
 		</div>
 	)
 }
