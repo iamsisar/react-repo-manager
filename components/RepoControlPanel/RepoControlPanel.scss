@@ -1,5 +1,5 @@
 .repoControlPanel{
-
+	position: relative;
 	h1{
 		strong, small{
 			display:block;
@@ -14,5 +14,8 @@
 		font-size:30px;
 	}
 
+}
 
+.chartContainer{
+	margin-top:2rem;
 }

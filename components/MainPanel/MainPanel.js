@@ -22,29 +22,37 @@ const MainPanel = ({type, ...data}) => {
 	switch (type){
 		case 'SCREEN_WELCOME':
 			return(
-			<div className={style.mainPanel}>
-				<h1>Benvenuto</h1>
+			<div className={style.mainPanel + ' main-panel'}>
+				<div className={style.wrapper + ' main-panel-wrapper'}>
+					<h1>Benvenuto</h1>
+				</div>
 			</div>
 			)
 
 		case 'SCREEN_REPOSITORY':
 			return(
-			<div className={style.mainPanel}>
-				<ManageRepo {...data} />
+			<div className={style.mainPanel + ' main-panel'}>
+				<div className={style.wrapper + ' main-panel-wrapper'}>
+					<ManageRepo {...data} />
+				</div>
 			</div>
 			)
 
 		case 'SCREEN_ADD_REPOSITORY':
 			return(
-			<div className={style.mainPanel}>
-				<PanelAddRepo {...data} />
+			<div className={style.mainPanel + ' main-panel'}>
+				<div className={style.wrapper + ' main-panel-wrapper'}>
+					<PanelAddRepo {...data} />
+				</div>
 			</div>
 			)
 
 		default:
 			return(
-			<div className={style.mainPanel}>
-				<span>zzz...</span>
+			<div className={style.mainPanel + ' main-panel'}>
+				<div className={style.wrapper + ' main-panel-wrapper'}>
+					<span>zzz...</span>
+				</div>
 			</div>
 			)
 	}

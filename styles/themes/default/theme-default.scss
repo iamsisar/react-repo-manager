@@ -11,6 +11,7 @@
 
 	h1, h2, h3{
 		@extend %font-head;
+		color:#73879c
 	}
 
 	.sidebar{
@@ -18,26 +19,38 @@
 		background: $sidebar-background;
 
 		.row{
+			font-weight:normal;
 			&:hover{
 				background: lighten($sidebar-background,3%)
 			}
 
 			&.selected{
-				background: $body-background;
+				background: $sidebar-highlight-background;
 				animation:none;
 			}
 		}
 
 		.separator{
-			border-color:darken($sidebar-background,10%);
-			background-color: darken($sidebar-background,3%);
-			color: darken($sidebar-background,25%)
+			border-color:$sidebar-separator-border-color;
+			color:$sidebar-separator-color;
+			background-color: $sidebar-separator-background;
+			font-weight:600;
+			letter-spacing:.2em;
 		}
 
 		.search input{
 			border:none;
 			border-radius:$input-border-radius;
 			color: lighten($sidebar-text-color,30%);
+		}
+
+		.update-button{
+			span{
+				background: transparent!important;
+				&::before{
+					color:$toggle-cursor-on-background
+				}
+			}
 		}
 	}
 
@@ -66,6 +79,15 @@
 		}
 	}
 
+	.main-panel{
+		h1, h2{
+			color:$main-panel-heading-color
+		}
+	}
+
+	.main-panel-wrapper{
+		background:#ffffff;
+	}
 
 	.add-repo-panel [type="text"]{
 		border:none;

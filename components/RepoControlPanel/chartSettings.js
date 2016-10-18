@@ -4,22 +4,22 @@ export const chartOptions = {
             stacked: true,
         }],
         xAxes: [{
-        stacked: true
+            stacked: true
         }]
     }
 };
 
 
 const chartColors = [
-    "rgba(101,137,155,0.5)",
-    "rgba(151,187,205,0.5)",
-    "rgba(81,117,135,0.5)",
-    "rgba(111,147,175,0.5)"
+    "rgba(53, 138, 156, 1.00)",
+    "rgba(33, 118, 136, 1.00)",
+    "rgba(13, 98, 116, 1.00)",
+    "rgba(3, 88, 106, 1.00)",
 ]
 
 export const makeChartData = (stats) => {
 
-    const datasets = stats.users.map( (user, i) => {
+    const datasetsUsers = stats.users.map( (user, i) => {
         return{
             type : "bar",
             label : "Commits by " + user.name,
@@ -28,7 +28,7 @@ export const makeChartData = (stats) => {
         }
     } );
 
-    datasets.push({
+    const datasetsTotal = {
         type: 'line',
         label: 'Commits per month',
         data: stats.months.map( (month, i) => {
@@ -38,10 +38,12 @@ export const makeChartData = (stats) => {
             }
             return monthTotal;
         }),
-        borderColor: 'rgba(151,187,205,0.5)',
+        borderColor: 'rgba(83, 199, 174, 1.00)',
         backgroundColor: "transparent",
         borderWidth: 2
-    });
+    };
+
+    const datasets = [datasetsTotal, ...datasetsUsers];
 
     return {
         labels: stats.months,

@@ -28,7 +28,9 @@ const RepoControlPanel = ({ data, toggleRepo, updateToTip }) => {
 				<ToggleSwitch changeCallback={ () => toggleRepo(id) } checked={isActive} />
 				<UpdateButton clickCallback={ () => updateToTip(id) } />
 			</div>
-			<Bar data={chartData} options={chartOptions}  width={100} height={30} />
+			<div className={style.chartContainer} >
+				<Bar data={chartData} options={chartOptions}  width={100} height={40} />
+			</div>
 		</div>
 	)
 }

@@ -1,15 +1,21 @@
 $input-border-radius: 	.4em;
 $input-border-radius: 	.4em;
 
-$body-background: #f0f0f0;
+$body-background: #e5e5e5;
 
-$sidebar-background: #cbd0d8;
-$sidebar-text-color: #2a4365;
+$sidebar-background: #2a3f54;
+$sidebar-highlight-background: #34485c;
+$sidebar-text-color: #e5e5e5;
+$sidebar-separator-background: #2f4356;
+$sidebar-separator-color:#9abcc3;
+$sidebar-separator-border-color:rgba(30,30,30,.3);
 
-$toggle-track-background: rgba(30,30,30,.2);
+$toggle-track-background: rgba(30,30,30,.3);
 $toggle-cursor-off-background: grey;
-$toggle-cursor-on-background: #4874a8;
-$toggle-cursor-on-border: darken(#4874a8, 5%);
+$toggle-cursor-on-background: #1abb9c;
+$toggle-cursor-on-border: darken(#1abb9c, 5%);
 
-$update-button-background: #a6a6a6;
-$update-button-foreground: #333;
+$update-button-background: #1abb9c;
+$update-button-foreground: #34485c;
+
+$main-panel-heading-color:#2f4356;
