@@ -55,7 +55,12 @@ class AddRepo extends React.Component{
 	render(){
 
 		const urlInputClassName = classNames({
-			[style.toggleFieldsBind] : true,
+			[style.urlInput] : true,
+			[style.unbound] : this.state.fieldsBind
+		});
+
+		const urlSpanClassName = classNames({
+			[style.url] : true,
 			[style.unbound] : this.state.fieldsBind
 		});
 
@@ -72,6 +77,7 @@ class AddRepo extends React.Component{
 
 					<h2>Address</h2>
 					<span className={style.domain} >http://</span>
+					<span className={urlSpanClassName} >{this.state.newRepoUrl}</span>
 					<input type="text"
 						className={urlInputClassName}
 						readOnly={this.state.fieldsBind}

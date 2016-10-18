@@ -3,6 +3,7 @@ import {Bar} from 'react-chartjs-2';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import UpdateButton from '../UpdateButton/UpdateButton';
 
+
 import {chartOptions, makeChartData} from './chartSettings';
 import style from './RepoControlPanel.scss';
 
@@ -26,7 +27,10 @@ const RepoControlPanel = ({ data, toggleRepo, updateToTip }) => {
 			</h1>
 			<div className={style.controls} >
 				<ToggleSwitch changeCallback={ () => toggleRepo(id) } checked={isActive} />
-				<UpdateButton clickCallback={ () => updateToTip(id) } />
+				{ isActive
+					? <UpdateButton clickCallback={ () => updateToTip(id) } />
+					: null
+				}
 			</div>
 			<div className={style.chartContainer} >
 				<Bar data={chartData} options={chartOptions}  width={100} height={40} />
