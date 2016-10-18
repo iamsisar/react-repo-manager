@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SERVER_URL} from '../config.js';
+import { SERVER_URL, REPOS_DOMAIN } from '../config.js';
 
 export const FETCH_REPOS = 'FETCH_REPOS';
 export const FETCH_REPOS_SUCCESS = 'FETCH_REPOS_SUCCESS';
@@ -12,18 +12,6 @@ export const CREATE_REPO_FAILURE = 'CREATE_REPO_FAILURE';
 
 export const TOGGLE_REPO = 'TOGGLE_REPO';
 export const UPDATE_TO_TIP = 'UPDATE_TO_TIP';
-
-
-import firebase from 'firebase/app';
-require('firebase/database');
-
-const app = firebase.initializeApp({
-	apiKey: "AIzaSyD3dKzNeftSSogQbTIjLqZYbGau6RTXBn0",
-    authDomain: "repo-manager-demo.firebaseapp.com",
-    databaseURL: "https://repo-manager-demo.firebaseio.com",
-    storageBucket: "",
-    messagingSenderId: "287673014735"
-});
 
 
 /*
@@ -65,7 +53,7 @@ export function createNewRepo(name, url){
 		url: `${SERVER_URL}/repos`,
 		data: {
 			name: name,
-			url: url
+			url: `${url}.${REPOS_DOMAIN}`
 		}
 	});
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
-import chart from './chartSettings';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import UpdateButton from '../UpdateButton/UpdateButton';
 
+import {chartOptions, makeChartData} from './chartSettings';
 import style from './RepoControlPanel.scss';
 
 const propTypes = {
@@ -14,7 +14,9 @@ const propTypes = {
 
 const RepoControlPanel = ({ data, toggleRepo, updateToTip }) => {
 
-	const {name, url, port, id, isActive} = data;
+	const {name, url, port, id, isActive, stats} = data;
+
+	const chartData = makeChartData(stats);
 
 	return(
 		<div className={style.repoControlPanel}>
@@ -26,7 +28,7 @@ const RepoControlPanel = ({ data, toggleRepo, updateToTip }) => {
 				<ToggleSwitch changeCallback={ () => toggleRepo(id) } checked={isActive} />
 				<UpdateButton clickCallback={ () => updateToTip(id) } />
 			</div>
-			<Bar data={chart.chartData} options={chart.chartOptions}  width={100} height={30} />
+			<Bar data={chartData} options={chartOptions}  width={100} height={30} />
 		</div>
 	)
 }

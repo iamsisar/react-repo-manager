@@ -23,7 +23,7 @@ const MainPanel = ({type, ...data}) => {
 		case 'SCREEN_WELCOME':
 			return(
 			<div className={style.mainPanel}>
-				<span>Benvenuto</span>
+				<h1>Benvenuto</h1>
 			</div>
 			)
 
