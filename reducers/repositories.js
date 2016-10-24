@@ -103,9 +103,8 @@ const repositories = ( state = { list:[], loading: false, error:null }, action )
 
 
 		case UPDATE_TO_TIP :
-			alert('update to tip repo ' + action.id)
-		break;
-
+			alert('update to tip repo ' + action.id);
+			return state;
 
 		default:
 			return state;
