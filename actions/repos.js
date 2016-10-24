@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SERVER_URL, REPOS_DOMAIN } from '../config.js';
+import { SERVER_URL, REPOS_DOMAIN, ROUTE_GET_REPOS, ROUTE_POST_REPO } from '../config.js';
 
 export const FETCH_REPOS = 'FETCH_REPOS';
 export const FETCH_REPOS_SUCCESS = 'FETCH_REPOS_SUCCESS';
@@ -22,8 +22,7 @@ export const UPDATE_TO_TIP = 'UPDATE_TO_TIP';
 export function fetchRepos() {
 	const request = axios({
 		method: 'get',
-		url: `${SERVER_URL}/repos`,
-		headers: []
+		url: `${SERVER_URL}/${ROUTE_GET_REPOS}`
 	});
 
 	return {
@@ -50,7 +49,7 @@ export function fetchReposFailure(error) {
 export function createNewRepo(name, url){
 	const request = axios({
 		method: 'post',
-		url: `${SERVER_URL}/repos`,
+		url: `${SERVER_URL}/${ROUTE_POST_REPO}`,
 		data: {
 			name: name,
 			url: `${url}.${REPOS_DOMAIN}`
