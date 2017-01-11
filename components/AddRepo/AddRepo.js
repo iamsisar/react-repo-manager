@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './AddRepo.scss';
 import classNames from 'classNames';
+import {parseNameToSlug} from '../../utilities/strings';
 
 import {REPOS_DOMAIN} from '../../config.js';
 
@@ -25,14 +26,11 @@ class AddRepo extends React.Component{
 		this._toggleFieldsBind = this._toggleFieldsBind.bind(this);
 	}
 
-	_parseNameToSlug(str){
-		return str.replace(/\s+/g, '-').toLowerCase();
-	}
 
 	_handleNameChange() {
 		this.setState({
 			newRepoName: this._nameField.value,
-			newRepoUrl: this._parseNameToSlug(this._nameField.value)
+			newRepoUrl: parseNameToSlug(this._nameField.value)
 		});
 	}
 
@@ -82,7 +80,7 @@ class AddRepo extends React.Component{
 						className={urlInputClassName}
 						readOnly={this.state.fieldsBind}
 						ref={ (input) => this._urlField = input }
-						onChange={ (e) => e.target.value = this._parseNameToSlug(e.target.value) }
+						onChange={ (e) => e.target.value = parseNameToSlug(e.target.value) }
 						value={ this.state.fieldsBind ? this.state.newRepoUrl : undefined }
 					/>
 

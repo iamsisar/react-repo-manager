@@ -12,6 +12,14 @@ const reducer = combineReducers({
   repositories
 });
 
-export default createStore(reducer, window.devToolsExtension && window.devToolsExtension());
-									// ^^^							^^^
-									// abilitiamo il debug via devTools del browser
+let store = null;
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
+    store = createStore(reducer);
+} else {
+    store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
+                                // ^^^                          ^^^
+                                // abilitiamo il debug via devTools del browser
+}
+
+
+export default store
