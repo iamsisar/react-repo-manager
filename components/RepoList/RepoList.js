@@ -50,7 +50,7 @@ class RepoList extends React.Component{
 		return (
 
 			<div>
-				<span className={ style.separator + ' ' + 'separator' } >Manage</span>
+				<span className={ style.separator + ' ' + 'separator' } >Manage a {this.context.language}</span>
 				<ManageRepos addRepo={addRepo} />
 
 				<span className={ style.separator + ' ' + 'separator' } >Search</span>
